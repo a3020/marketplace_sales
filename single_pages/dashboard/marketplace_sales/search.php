@@ -82,19 +82,54 @@ $date = $app->make('helper/form/date_time');
             </table>
         </div>
 
+        <table class="table table-striped table-bordered" id="tbl-sales">
+            <thead>
+                <tr>
+                    <th><?php echo t('Order number'); ?></th>
+                    <th style="width: 220px"><?php echo t('Add-on name') ?></th>
+                    <th style="width: 135px"><?php echo t('Add-on handle') ?></th>
+                    <th style="width: 65px"><?php echo t('Username') ?></th>
+                    <th style="width: 65px"><?php echo t('Date') ?></th>
+                    <th style="width: 135px"><?php echo t('Amount') ?></th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
         <?php
-        /** @var \A3020\MarketplaceSales\Entity\Sale[] $sale */
-        foreach ($sales as $sale) {
-            ?>
-            <div class="sale">
-                <?php
-                echo '<pre>';
-                var_dump($sale);
-                echo '</pre>';
-                ?>
-            </div>
-            <?php
-        }
     }
     ?>
 </div>
+
+
+<script>
+$(document).ready(function() {
+    $('#tbl-sales').DataTable({
+        ajax: '<?php echo Url::to('/ccm/system/marketplace_sales/sales'); ?>',
+        lengthMenu: [[20, 50, 100], [20, 50, 100]],
+        columns: [
+            {
+                data: "order_number"
+            },
+            {
+                data: "package_handle"
+            },
+            {
+                data: "package_name"
+            },
+            {
+                data: "username"
+            },
+            {
+                data: "sold_at"
+            },
+            {
+                data: "amount"
+            }
+        ],
+        order: [[4, "desc"]]
+    });
+})
+</script>
+

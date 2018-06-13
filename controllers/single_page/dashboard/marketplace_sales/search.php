@@ -6,6 +6,7 @@ use A3020\MarketplaceSales\Entity\Sale;
 use A3020\MarketplaceSales\Parser\ParseEmail;
 use A3020\MarketplaceSales\Sale\SaleRepository;
 use A3020\MarketplaceSales\Sale\SaleStatistics;
+use Concrete\Core\Asset\AssetList;
 use Concrete\Core\Error\UserMessageException;
 use Concrete\Core\Page\Controller\DashboardPageController;
 use Concrete\Core\Routing\Redirect;
@@ -13,6 +14,21 @@ use Exception;
 
 final class Search extends DashboardPageController
 {
+    public function on_before_render()
+    {
+        parent::on_before_render();
+
+        $al = AssetList::getInstance();
+
+        $al->register('javascript', 'marketplace_sales/datatables', 'js/datatables.min.js', [], 'marketplace_sales');
+        $this->requireAsset('javascript', 'marketplace_sales/datatables');
+
+        $al->register('css', 'marketplace_sales/style', 'css/style.css', [], 'marketplace_sales');
+        $al->register('css', 'marketplace_sales/datatables', 'css/datatables.css', [], 'marketplace_sales');
+        $this->requireAsset('css', 'marketplace_sales/style');
+        $this->requireAsset('css', 'marketplace_sales/datatables');
+    }
+
     public function view()
     {
         /** @var SaleRepository $saleRepository */

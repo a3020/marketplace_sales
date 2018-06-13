@@ -2,17 +2,41 @@
 
 namespace A3020\MarketplaceSales\Provider;
 
-use Concrete\Core\Foundation\Service\Provider;
+use Concrete\Core\Application\ApplicationAwareInterface;
+use Concrete\Core\Application\ApplicationAwareTrait;
+use Concrete\Core\Routing\RouterInterface;
 use Doctrine\ORM\EntityManager;
 
-final class MarketplaceSalesProvider extends Provider
+final class MarketplaceSalesProvider implements ApplicationAwareInterface
 {
+    use ApplicationAwareTrait;
+
+    /**
+     * @var RouterInterface
+     */
+    private $router;
+
+    public function __construct(RouterInterface $router)
+    {
+        $this->router = $router;
+    }
+
     /**
      * Registers the services provided by this provider.
      */
     public function register()
     {
         $this->bindings();
+        $this->registerRoutes();
+    }
+
+    private function registerRoutes()
+    {
+        $this->router->registerMultiple([
+            '/ccm/system/marketplace_sales/sales' => [
+                '\A3020\MarketplaceSales\Ajax\Sales::view',
+            ],
+        ]);
     }
 
     private function bindings()

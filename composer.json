@@ -1,0 +1,13 @@
+{
+    "name": "a3020/marketplace_sales",
+    "description": "concrete5 add-on to keep track of marketplace sales",
+    "type": "concrete5-package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "a3020",
+            "email": "a3020@fastmail.com"
+        }
+    ],
+    "require": {}
+}

@@ -47,7 +47,7 @@ class ParseEmail
             preg_match('/themes\/(.*)\//', $email, $matches);
         }
 
-        return $this->returnOrFail($matches, t('Add-on handle'));
+        return isset($matches[1]) ? $matches[1] : t('unknown');
     }
 
     private function getUsername($email)

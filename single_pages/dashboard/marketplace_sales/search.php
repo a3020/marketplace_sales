@@ -5,7 +5,6 @@ defined('C5_EXECUTE') or die('Access Denied.');
 use Concrete\Core\Support\Facade\Url;
 
 $app = Concrete\Core\Support\Facade\Application::getFacadeApplication();
-
 $date = $app->make('helper/form/date_time');
 
 ?>
@@ -58,7 +57,18 @@ $date = $app->make('helper/form/date_time');
 
         <?php
     } else {
-        echo 'here we\'ll show an overview of sales';
+        /** @var \A3020\MarketplaceSales\Entity\Sale[] $sale */
+        foreach ($sales as $sale) {
+            ?>
+            <div class="sale">
+                <?php
+                echo '<pre>';
+                var_dump($sale);
+                echo '</pre>';
+                ?>
+            </div>
+            <?php
+        }
     }
     ?>
 </div>

@@ -13,7 +13,10 @@ final class Search extends DashboardPageController
 {
     public function view()
     {
+        /** @var SaleRepository $saleRepository */
+        $saleRepository = $this->app->make(SaleRepository::class);
 
+        $this->set('sales', $saleRepository->get());
     }
 
     public function add()

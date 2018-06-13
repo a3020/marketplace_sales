@@ -4,6 +4,10 @@ defined('C5_EXECUTE') or die('Access Denied.');
 
 use Concrete\Core\Support\Facade\Url;
 
+$app = Concrete\Core\Support\Facade\Application::getFacadeApplication();
+
+$date = $app->make('helper/form/date_time');
+
 ?>
 
 <div class="ccm-dashboard-header-buttons btn-group">
@@ -11,8 +15,8 @@ use Concrete\Core\Support\Facade\Url;
     if (!in_array($this->controller->getTask(), ['add'])) {
         ?>
         <a
-                class="btn btn-default"
-                href="<?php echo $this->action('add') ?>">
+            class="btn btn-default"
+            href="<?php echo $this->action('add') ?>">
             <?php echo t('Add sale'); ?>
         </a>
         <?php
@@ -24,14 +28,22 @@ use Concrete\Core\Support\Facade\Url;
     <?php
     if (in_array($this->controller->getTask(), ['add'])) {
         ?>
-        <form action="<?php echo $this->action('add') ?>">
+        <form method="post" action="<?php echo $this->action('add') ?>">
             <?php
             echo $token->output('marketplace_sales.add_sale');
             ?>
             <div class="form-group">
                 <?php
+                echo $form->label('soldAt', 'Sold at');
+                echo $date->datetime('soldAt');
+                ?>
+            </div>
+
+            <div class="form-group">
+                <?php
                 echo $form->label('email', 'Copy / paste the email');
                 echo $form->textarea('email', [
+                    'required' => 'required',
                     'style' => 'min-height: 500px',
                 ]);
                 ?>

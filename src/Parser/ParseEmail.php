@@ -2,6 +2,8 @@
 
 namespace A3020\MarketplaceSales\Parser;
 
+use Exception;
+
 class ParseEmail
 {
     /**
@@ -27,47 +29,54 @@ class ParseEmail
     {
         preg_match('/ORDER NUMBER : #(.*)/', $email, $matches);
 
-        return isset($matches[1]) ? $matches[1] : '';
+        return $this->returnOrFail($matches, t('Order number'));
     }
 
     private function getPkgName($email)
     {
         preg_match('/ been placed for: (.*) -/', $email, $matches);
 
-        return isset($matches[1]) ? $matches[1] : '';
+        return $this->returnOrFail($matches, t('Add-on name'));
     }
 
     private function getPkgHandle($email)
     {
         preg_match('/addons\/(.*)\//', $email, $matches);
-        $handle = isset($matches[1]) ? $matches[1] : '';
 
-        if (empty($handle)) {
+        if (!isset($matches[1])) {
             preg_match('/themes\/(.*)\//', $email, $matches);
-            $handle = isset($matches[1]) ? $matches[1] : '';
         }
 
-        return $handle;
+        return $this->returnOrFail($matches, t('Add-on handle'));
     }
 
     private function getUsername($email)
     {
         preg_match('/By the user: (.*) -/', $email, $matches);
 
-        return isset($matches[1]) ? $matches[1] : '';
+        return $this->returnOrFail($matches, t('Username'));
     }
 
     private function getUserId($email)
     {
         preg_match('/profile\/-\/(.*)\//', $email, $matches);
 
-        return isset($matches[1]) ? $matches[1] : '';
+        return $this->returnOrFail($matches, t('User id'));
     }
 
     private function getAmount($email)
     {
         preg_match('/has been credited: (.*)/', $email, $matches);
 
-        return isset($matches[1]) ? $matches[1] : '';
+        return $this->returnOrFail($matches, t('Amount'));
+    }
+
+    private function returnOrFail($matches, $type)
+    {
+        if (isset($matches[1]) && !empty($matches[1])) {
+            return $matches[1];
+        }
+
+        throw new Exception($type . ' could not be parsed.');
     }
 }

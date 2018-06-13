@@ -25,9 +25,9 @@ $date = $app->make('helper/form/date_time');
 
 <div class="ccm-dashboard-content-inner">
     <?php
-    if (in_array($this->controller->getTask(), ['add'])) {
+    if (in_array($this->controller->getTask(), ['add', 'parse'])) {
         ?>
-        <form method="post" action="<?php echo $this->action('add') ?>">
+        <form method="post" action="<?php echo $this->action('parse') ?>">
             <?php
             echo $token->output('marketplace_sales.add_sale');
             ?>

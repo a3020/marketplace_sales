@@ -5,6 +5,7 @@ namespace Concrete\Package\MarketplaceSales\Controller\SinglePage\Dashboard\Mark
 use A3020\MarketplaceSales\Entity\Sale;
 use A3020\MarketplaceSales\Parser\ParseEmail;
 use A3020\MarketplaceSales\Sale\SaleRepository;
+use A3020\MarketplaceSales\Sale\SaleStatistics;
 use Concrete\Core\Error\UserMessageException;
 use Concrete\Core\Page\Controller\DashboardPageController;
 use Concrete\Core\Routing\Redirect;
@@ -17,7 +18,14 @@ final class Search extends DashboardPageController
         /** @var SaleRepository $saleRepository */
         $saleRepository = $this->app->make(SaleRepository::class);
 
+        /** @var SaleStatistics $saleStatistics */
+        $saleStatistics = $this->app->make(SaleStatistics::class);
+
         $this->set('sales', $saleRepository->get());
+        $this->set('totalRevenue', $saleStatistics->getTotalRevenue());
+        $this->set('totalRevenueYear', $saleStatistics->getTotalRevenueYear());
+        $this->set('totalRevenueMonth', $saleStatistics->getTotalRevenueMonth());
+        $this->set('totalSales', $saleStatistics->getTotalSales());
     }
     
     public function add()

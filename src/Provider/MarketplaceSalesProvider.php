@@ -23,5 +23,12 @@ final class MarketplaceSalesProvider extends Provider
                 return $this->app->make(EntityManager::class)
                     ->getRepository(\A3020\MarketplaceSales\Entity\Sale::class);
             });
+
+        $this->app->when(\A3020\MarketplaceSales\Sale\SaleStatistics::class)
+            ->needs(\Doctrine\ORM\EntityRepository::class)
+            ->give(function(){
+                return $this->app->make(EntityManager::class)
+                    ->getRepository(\A3020\MarketplaceSales\Entity\Sale::class);
+            });
     }
 }

@@ -57,6 +57,32 @@ $date = $app->make('helper/form/date_time');
 
         <?php
     } else {
+        ?>
+
+        <div class="statistics">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td><?php echo t('Total revenue'); ?></td>
+                        <td>$<?php echo number_format($totalRevenue, 2) ?></td>
+                    </tr>
+                    <tr>
+                        <td><?php echo t('Total this year'); ?></td>
+                        <td>$<?php echo number_format($totalRevenueYear, 2) ?></td>
+                    </tr>
+                    <tr>
+                        <td><?php echo t('Total in past 30 days'); ?></td>
+                        <td>$<?php echo number_format($totalRevenueMonth, 2) ?></td>
+                    </tr>
+                    <tr>
+                        <td><?php echo t('Total sales'); ?></td>
+                        <td><?php echo $totalSales ?></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <?php
         /** @var \A3020\MarketplaceSales\Entity\Sale[] $sale */
         foreach ($sales as $sale) {
             ?>

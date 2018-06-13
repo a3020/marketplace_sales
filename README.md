@@ -10,7 +10,9 @@ concrete5 add-on to keep track of marketplace sales
 
 ## Features
 - Parse a sale email and turn it into a database record
-- List sale entries
+- Displays statistics (year, month, etc)
+- Displays all sales
+- Filtering / searching on sales
 
 ## Compatibility
 concrete5 8.2.1+

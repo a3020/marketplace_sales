@@ -45,7 +45,7 @@ class Sale
     protected $userId;
 
     /**
-     * @ORM\Column(type="decimal", precision=4, scale=2, nullable=false)
+     * @ORM\Column(type="decimal", precision=8, scale=2, nullable=false)
      */
     protected $amount = 0;
 

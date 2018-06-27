@@ -2,18 +2,9 @@
 
 namespace A3020\MarketplaceSales\Ajax;
 
-use A3020\Gdpr\BlockType\Scanner;
-use A3020\Gdpr\BlockType\Usage;
 use A3020\Gdpr\Controller\AjaxController;
-use A3020\Gdpr\Entity\BlockScanStatus;
-use A3020\Gdpr\Scan\Block\StatusRepository;
 use A3020\MarketplaceSales\Sale\SaleRepository;
-use Concrete\Core\Block\BlockType\BlockType;
-use Concrete\Core\Http\Response;
 use Concrete\Core\Http\ResponseFactory;
-use Concrete\Core\Support\Facade\Url;
-use Concrete\Core\View\View;
-use Exception;
 
 class Sales extends AjaxController
 {

@@ -34,7 +34,7 @@ $date = $app->make('helper/form/date_time');
             <div class="form-group">
                 <?php
                 echo $form->label('soldAt', 'Sold at');
-                echo $date->datetime('soldAt');
+                echo $date->datetime('soldAt', date('Y-m-d'));
                 ?>
             </div>
 

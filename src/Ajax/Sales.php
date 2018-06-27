@@ -33,7 +33,7 @@ class Sales extends AjaxController
                 'package_handle' => $sale->getPkgHandle(),
                 'package_name' => $sale->getPkgName(),
                 'username' => $sale->getUsername(),
-                'user_id' => $sale->getId(),
+                'user_id' => $sale->getUserId(),
                 'sold_at' => $sale->getSoldAt()->format('Y-m-d'),
                 'amount' => $sale->getAmount(),
             ];

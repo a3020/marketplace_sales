@@ -119,7 +119,9 @@ $(document).ready(function() {
                 data: "package_name"
             },
             {
-                data: "username"
+                data: function(row, type, val) {
+                    return '<a target="_blank" href="https://www.concrete5.org/profile/-/' + row.user_id + '">' + row.username + '</a>';
+                }
             },
             {
                 data: "sold_at"

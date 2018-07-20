@@ -20,7 +20,7 @@ class Sale
     protected $id;
 
     /**
-     * @ORM\Column(type="integer", options={"unsigned":true}, unique=true, nullable=false)
+     * @ORM\Column(type="integer", options={"unsigned":true}, nullable=false)
      */
     protected $orderNumber;
 

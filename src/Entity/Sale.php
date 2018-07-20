@@ -59,6 +59,11 @@ class Sale
      */
     protected $createdAt;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $comments;
+
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
@@ -190,5 +195,21 @@ class Sale
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param string $comments
+     */
+    public function setComments($comments)
+    {
+        $this->comments = $comments;
     }
 }

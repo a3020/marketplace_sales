@@ -85,7 +85,7 @@ $date = $app->make('helper/form/date_time');
             <thead>
                 <tr>
                     <th><?php echo t('Order number'); ?></th>
-                    <th style="width: 220px"><?php echo t('Add-on name') ?></th>
+                    <th style="width: 220px"><?php echo t('Sale name') ?></th>
                     <th style="width: 135px"><?php echo t('Add-on handle') ?></th>
                     <th style="width: 65px"><?php echo t('Username') ?></th>
                     <th style="width: 65px"><?php echo t('Date') ?></th>

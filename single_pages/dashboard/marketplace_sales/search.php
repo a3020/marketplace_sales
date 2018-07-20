@@ -112,10 +112,10 @@ $(document).ready(function() {
                 data: "order_number"
             },
             {
-                data: "package_handle"
+                data: "package_name"
             },
             {
-                data: "package_name"
+                data: "package_handle"
             },
             {
                 data: function(row, type, val) {

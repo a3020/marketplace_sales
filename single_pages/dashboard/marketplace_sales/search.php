@@ -48,10 +48,9 @@ $date = $app->make('helper/form/date_time');
                 ?>
             </div>
 
-            <div class="ccm-dashboard-form-actions-wrapper">
-                <div class="ccm-dashboard-form-actions">
-                    <button class="pull-right btn btn-primary" type="submit"><?php echo t('Save') ?></button>
-                </div>
+            <div class="ccm-dashboard-form-actions">
+                <a class="btn btn-default" href="<?php echo Url::to('/dashboard/marketplace_sales/search'); ?>"><?php echo t('Cancel') ?></a>
+                <button class="pull-right btn btn-primary" type="submit"><?php echo t('Save') ?></button>
             </div>
         </form>
 

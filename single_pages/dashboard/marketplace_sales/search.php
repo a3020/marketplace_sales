@@ -131,7 +131,7 @@ $(document).ready(function() {
                 data: "amount"
             }
         ],
-        order: [[4, "desc"]]
+        order: [[1, "desc"]]
     });
 })
 </script>

@@ -13,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Sale
 {
+    const PKG_HANDLE_UNKNOWN = 'unknown';
+
     /**
      * @ORM\Id @ORM\Column(type="integer", options={"unsigned":true})
      * @ORM\GeneratedValue(strategy="AUTO")

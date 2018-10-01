@@ -2,6 +2,7 @@
 
 defined('C5_EXECUTE') or die('Access Denied.');
 
+use A3020\MarketplaceSales\Entity\Sale;
 use Concrete\Core\Support\Facade\Url;
 
 $app = Concrete\Core\Support\Facade\Application::getFacadeApplication();
@@ -117,7 +118,13 @@ $(document).ready(function() {
                 data: "package_name"
             },
             {
-                data: "package_handle"
+                data: function(row, type, val) {
+                    if (row.package_handle === '<?php echo Sale::PKG_HANDLE_UNKNOWN ?>') {
+                        return row.package_handle;
+                    }
+
+                    return '<a target="_blank" href="https://www.concrete5.org/marketplace/addons/' + row.package_handle + '">' + row.package_handle + '</a>';
+                }
             },
             {
                 data: function(row, type, val) {

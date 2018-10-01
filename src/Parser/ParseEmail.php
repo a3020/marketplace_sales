@@ -2,6 +2,7 @@
 
 namespace A3020\MarketplaceSales\Parser;
 
+use A3020\MarketplaceSales\Entity\Sale;
 use Exception;
 
 class ParseEmail
@@ -47,7 +48,7 @@ class ParseEmail
             preg_match('/themes\/(.*)\//', $email, $matches);
         }
 
-        return isset($matches[1]) ? $matches[1] : t('unknown');
+        return isset($matches[1]) ? $matches[1] : t(Sale::PKG_HANDLE_UNKNOWN);
     }
 
     private function getUsername($email)
